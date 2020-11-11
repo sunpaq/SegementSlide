@@ -22,7 +22,11 @@ extension SegementSlideViewController {
                 canChildViewScroll = true
             } else if parentContentOffsetY >= headerStickyHeight {
                 parentScrollView.contentOffset.y = headerStickyHeight
-                canParentViewScroll = false
+                if allowParentViewScrollWhenOffsetGreaterThenHeaderHeight() {
+                    canParentViewScroll = true
+                } else {
+                    canParentViewScroll = false
+                }
                 canChildViewScroll = true
             } else {
                 resetOtherCachedChildViewControllerContentOffsetY()

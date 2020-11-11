@@ -103,6 +103,10 @@ open class SegementSlideViewController: UIViewController {
         return true
     }
     
+    open func allowParentViewScrollWhenOffsetGreaterThenHeaderHeight() -> Bool {
+        return false
+    }
+    
     open func setupHeader() {
         headerView?.enableHitTest = enableHeaderHitTest()
         innerHeaderView = segementSlideHeaderView()
