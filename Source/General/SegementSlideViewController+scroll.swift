@@ -65,7 +65,12 @@ extension SegementSlideViewController {
                 resetOtherCachedChildViewControllerContentOffsetY()
             }
         case .none:
-            parentScrollView.contentOffset.y = headerStickyHeight
+            if parentContentOffsetY >= headerStickyHeight {
+                parentScrollView.contentOffset.y = headerStickyHeight
+            }
+            if parentContentOffsetY <= 0 {
+                parentScrollView.contentOffset.y = 0
+            }
             //resetCurrentChildViewControllerContentOffsetY()
             //resetOtherCachedChildViewControllerContentOffsetY()
             canChildViewScroll = false
