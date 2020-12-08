@@ -65,7 +65,7 @@ extension SegementSlideViewController {
                 resetOtherCachedChildViewControllerContentOffsetY()
             }
         case .none:
-            resetCurrentChildViewControllerContentOffsetY()
+            //resetCurrentChildViewControllerContentOffsetY()
             resetOtherCachedChildViewControllerContentOffsetY()
             canChildViewScroll = false
             canParentViewScroll = false
