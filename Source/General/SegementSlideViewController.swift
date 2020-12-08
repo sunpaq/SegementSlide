@@ -11,6 +11,7 @@ import UIKit
 public enum BouncesType {
     case parent
     case child
+    case none
 }
 
 open class SegementSlideViewController: UIViewController {

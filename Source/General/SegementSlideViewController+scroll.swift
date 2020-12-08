@@ -64,6 +64,9 @@ extension SegementSlideViewController {
                 }
                 resetOtherCachedChildViewControllerContentOffsetY()
             }
+        case .none:
+            canChildViewScroll = false
+            canParentViewScroll = false
         }
     }
     
@@ -94,6 +97,9 @@ extension SegementSlideViewController {
                     canChildViewScroll = false
                 }
             }
+        case .none:
+            canChildViewScroll = false
+            canParentViewScroll = false
         }
     }
     
