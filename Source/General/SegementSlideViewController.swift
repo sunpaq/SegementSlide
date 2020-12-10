@@ -103,7 +103,11 @@ open class SegementSlideViewController: UIViewController {
         return true
     }
     
-    open func allowParentViewScroll() -> Bool {
+    open func allowParentViewScrollForBouncesTypeParent() -> Bool {
+        return false
+    }
+    
+    open func allowParentViewScrollForBouncesTypeChild() -> Bool {
         return false
     }
     

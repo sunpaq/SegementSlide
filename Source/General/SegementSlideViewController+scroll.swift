@@ -20,7 +20,7 @@ extension SegementSlideViewController {
             if !canParentViewScroll {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canChildViewScroll = true
-                if allowParentViewScroll() {
+                if allowParentViewScrollForBouncesTypeParent() {
                     canParentViewScroll = true
                 }
             } else if parentContentOffsetY >= headerStickyHeight {
@@ -38,7 +38,7 @@ extension SegementSlideViewController {
             if !canParentViewScroll {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canChildViewScroll = true
-                if allowParentViewScroll() {
+                if allowParentViewScrollForBouncesTypeChild() {
                     canParentViewScroll = true
                 }
             } else if parentContentOffsetY >= headerStickyHeight {
