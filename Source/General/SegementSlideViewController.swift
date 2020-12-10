@@ -11,7 +11,6 @@ import UIKit
 public enum BouncesType {
     case parent
     case child
-    case none
 }
 
 open class SegementSlideViewController: UIViewController {
@@ -104,7 +103,7 @@ open class SegementSlideViewController: UIViewController {
         return true
     }
     
-    open func allowParentViewScrollWhenOffsetGreaterThenHeaderHeight() -> Bool {
+    open func allowParentViewScroll() -> Bool {
         return false
     }
     

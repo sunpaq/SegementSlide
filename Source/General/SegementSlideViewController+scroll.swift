@@ -20,13 +20,12 @@ extension SegementSlideViewController {
             if !canParentViewScroll {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canChildViewScroll = true
+                if allowParentViewScroll() {
+                    canParentViewScroll = true
+                }
             } else if parentContentOffsetY >= headerStickyHeight {
                 parentScrollView.contentOffset.y = headerStickyHeight
-                if allowParentViewScrollWhenOffsetGreaterThenHeaderHeight() {
-                    canParentViewScroll = true
-                } else {
-                    canParentViewScroll = false
-                }
+                canParentViewScroll = false
                 canChildViewScroll = true
             } else {
                 resetOtherCachedChildViewControllerContentOffsetY()
@@ -39,6 +38,9 @@ extension SegementSlideViewController {
             if !canParentViewScroll {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canChildViewScroll = true
+                if allowParentViewScroll() {
+                    canParentViewScroll = true
+                }
             } else if parentContentOffsetY >= headerStickyHeight {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canParentViewScroll = false
@@ -64,17 +66,6 @@ extension SegementSlideViewController {
                 }
                 resetOtherCachedChildViewControllerContentOffsetY()
             }
-        case .none:
-            if parentContentOffsetY >= headerStickyHeight {
-                parentScrollView.contentOffset.y = headerStickyHeight
-            }
-            if parentContentOffsetY <= 0 {
-                parentScrollView.contentOffset.y = 0
-            }
-            //resetCurrentChildViewControllerContentOffsetY()
-            //resetOtherCachedChildViewControllerContentOffsetY()
-            canChildViewScroll = false
-            canParentViewScroll = false
         }
     }
     
@@ -105,9 +96,6 @@ extension SegementSlideViewController {
                     canChildViewScroll = false
                 }
             }
-        case .none:
-            canChildViewScroll = false
-            canParentViewScroll = false
         }
     }
     
