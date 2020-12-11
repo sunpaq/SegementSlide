@@ -102,15 +102,7 @@ open class SegementSlideViewController: UIViewController {
     open func enableHeaderHitTest() -> Bool {
         return true
     }
-    
-    open func allowParentViewScrollForBouncesTypeParent() -> Bool {
-        return false
-    }
-    
-    open func allowParentViewScrollForBouncesTypeChild() -> Bool {
-        return false
-    }
-    
+        
     open func setupHeader() {
         headerView?.enableHitTest = enableHeaderHitTest()
         innerHeaderView = segementSlideHeaderView()

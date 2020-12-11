@@ -10,6 +10,18 @@ import UIKit
 
 extension SegementSlideViewController {
     
+    internal func checkChildContentOverflow() {
+        if let childScrollView = currentSegementSlideContentViewController?.scrollView {
+            if childScrollView.contentSize.height > childScrollView.bounds.height {
+                //content larger then scroll window, can scroll
+                canParentViewScroll = false
+            } else {
+                //can not scroll
+                canParentViewScroll = true
+            }
+        }
+    }
+    
     internal func parentScrollViewDidScroll(_ parentScrollView: UIScrollView) {
         defer {
             scrollViewDidScroll(parentScrollView, isParent: true)
@@ -20,13 +32,11 @@ extension SegementSlideViewController {
             if !canParentViewScroll {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canChildViewScroll = true
-                if allowParentViewScrollForBouncesTypeParent() {
-                    canParentViewScroll = true
-                }
             } else if parentContentOffsetY >= headerStickyHeight {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canParentViewScroll = false
                 canChildViewScroll = true
+                checkChildContentOverflow()
             } else {
                 resetOtherCachedChildViewControllerContentOffsetY()
             }
@@ -38,13 +48,11 @@ extension SegementSlideViewController {
             if !canParentViewScroll {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canChildViewScroll = true
-                if allowParentViewScrollForBouncesTypeChild() {
-                    canParentViewScroll = true
-                }
             } else if parentContentOffsetY >= headerStickyHeight {
                 parentScrollView.contentOffset.y = headerStickyHeight
                 canParentViewScroll = false
                 canChildViewScroll = true
+                checkChildContentOverflow()
             } else if parentContentOffsetY <= 0 {
                 parentScrollView.contentOffset.y = 0
                 canChildViewScroll = true
